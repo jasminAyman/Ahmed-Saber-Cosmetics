@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protein & Cosmetics</title>
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container header-container">
+            <!-- Actions (Cart & WhatsApp) -->
+            <div class="header-actions">
+                <a href="https://wa.me/201002515477" target="_blank" class="whatsapp-btn" title="تواصل عبر الواتساب">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cartCount">0</span>
+                </div>
+            </div>
+
+            <!-- Search Bar (البحث) -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+                <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <div class="logo">
+                <a href="#"><img src="images/logo.png" alt=""></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Banner Section -->
+    <section class="hero-banner">
+        <div class="container-fluid px-0">
+          <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/g6.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="images/p9.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="images/p4.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+    </section>
+
+    <!-- Main Content / Product Catalog -->
+    <main class="container catalog-container">
+        
+        <!-- Filter Categories -->
+        <div class="categories-filter">
+          <button class="filter-btn active" data-category="all">الكل</button>
+          <!-- <button class="filter-btn" data-category="العروض">العروض</button> -->
+          <button class="filter-btn" data-category="البروتينات">البروتينات</button>
+          <button class="filter-btn" data-category="مجموعه العناية-نص لتر">مجموعات العناية-نص لتر</button>
+          <button class="filter-btn" data-category="مجموعه العناية-لتر">مجموعات العناية-لتر</button>
+          <button class="filter-btn" data-category="الترميمات">الترميمات</button>
+          <button class="filter-btn" data-category="المكاوي">المكاوي</button>
+          <button class="filter-btn" data-category="استشوارات">استشوارات</button>
+          <button class="filter-btn" data-category="الامبولات"> الامبولات</button>
+          <button class="filter-btn" data-category="البشرة">البشرة</button>
+          <button class="filter-btn" data-category="الاجهزة"> الاجهزة</button>
+          <button class="filter-btn" data-category="الرفايع">الرفايع</button>
+          <button class="filter-btn" data-category="الكراسي والشذلونج">الكراسي والشذلونج</button>
+          <button class="filter-btn" data-category="ترابيزة الاجهزة والتربوهات">ترابيزة الاجهزة والتربوهات</button>
+          <button class="filter-btn" data-category="شفرات الديرما بلانينج">شفرات الديرما بلانينج</button>
+          <button class="filter-btn" data-category="الصبغات ومستلزماتها">الصبغات ومستلزماتها</button>
+          <button class="filter-btn" data-category="كلارفينج وديتوكس القشرة">كلارفينج وديتوكس القشرة</button>
+          <button class="filter-btn" data-category="الباديكير ومستلزماته">الباديكير ومستلزماته</button>
+          <button class="filter-btn" data-category="التساقط والانبات">التساقط والانبات</button>
+        </div>
+
+        <!-- Product Grid (المنتجات) -->
+        <div class="product-grid" id="productGrid">
+            <!-- Dynamic products rendered by script.js -->
+        </div>
+    </main>
+
+    <!-- Modal for Image Zoom (التكبير) -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="imgZoomTarget">
+        <div id="modalCaption"></div>
+    </div>
+
+    <!-- Shopping Cart Drawer (السلة) -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>سلة التسوق</h3>
+            <span class="close-cart" id="closeCart">&times;</span>
+        </div>
+        <div class="cart-body" id="cartItems">
+            <!-- Cart items will be rendered here -->
+        </div>
+        <div class="cart-footer">
+          <div class="checkout-form">
+            <h4>بيانات التوصيل</h4>
+            <input
+                type="text"
+                id="customerName"
+                placeholder="الاسم بالكامل/اسم الصالون"
+                required>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="رقم الموبايل"
+                required>
+
+            <textarea
+                id="customerAddress"
+                placeholder="العنوان بالتفصيل :المحافظة-المنطقة-الشارع-رقم العمارة والدور"
+                rows="3"
+                required></textarea>
+          </div>
+          <div class="cart-total">
+              <span>الإجمالي:</span>
+              <span id="cartTotalAmount">0 ج.م</span>
+          </div>
+          <button class="btn-checkout-whatsapp" id="checkoutWhatsappBtn">
+              إرسال الطلب عبر الواتساب <i class="fa-brands fa-whatsapp"></i>
+          </button>
+      </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 جميع الحقوق محفوظة  لدى Ahmed Saber Cosmetics</p>
+        </div>
+    </footer>
+
+    <!-- JS Link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
